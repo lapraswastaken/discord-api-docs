@@ -220,7 +220,7 @@ There are a number of ways you can respond to an interaction:
 
 ###### Interaction Callback Data
 
-###### Interaction Callback Messages Structure
+###### Interaction Callback Message Structure
 
 Not all message fields are currently supported.
 
