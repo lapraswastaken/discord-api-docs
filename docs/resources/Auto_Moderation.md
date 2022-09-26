@@ -52,30 +52,26 @@ Rules can be configured to automatically execute actions whenever they trigger. 
 ```
 
 ###### Trigger Types
-
-> info
-> The `MENTION_SPAM` and `SPAM` trigger types are not yet released, so these cannot be used in most servers.
-
 Characterizes the type of content which can trigger the rule.
 
-| Type                 | Value   | Description                                                          | Max per Guild |
-| -------------------- | ------- | -------------------------------------------------------------------- | ------------- |
-| KEYWORD              | 1       | check if content contains words from a user defined list of keywords | 3             |
-| SPAM                 | 3       | check if content represents generic spam                             | 1             |
-| KEYWORD_PRESET       | 4       | check if content contains words from internal pre-defined wordsets   | 1             |
-| MENTION_SPAM         | 5       | check if content contains more mentions than allowed                 | 1             |
+| Type           | Value | Description                                                          | Max per Guild |
+| -------------- | ----- | -------------------------------------------------------------------- | ------------- |
+| KEYWORD        | 1     | check if content contains words from a user defined list of keywords | 3             |
+| SPAM           | 3     | check if content represents generic spam                             | 1             |
+| KEYWORD_PRESET | 4     | check if content contains words from internal pre-defined wordsets   | 1             |
+| MENTION_SPAM   | 5     | check if content contains more unique mentions than allowed          | 1             |
 
 ###### Trigger Metadata
 
 Additional data used to determine whether a rule should be triggered. Different fields are relevant based on the
 value of [trigger_type](#DOCS_RESOURCES_AUTO_MODERATION/auto-moderation-rule-object-trigger-types).
 
-| Field               | Type                                                                                                              | Associated Trigger Types | Description                                                                | 
+| Field               | Type                                                                                                              | Associated Trigger Types | Description                                                                |
 | ------------------- | ----------------------------------------------------------------------------------------------------------------- | ------------------------ | -------------------------------------------------------------------------- |
 | keyword_filter      | array of strings *                                                                                                | KEYWORD                  | substrings which will be searched for in content                           |
 | presets             | array of [keyword preset types](#DOCS_RESOURCES_AUTO_MODERATION/auto-moderation-rule-object-keyword-preset-types) | KEYWORD_PRESET           | the internally pre-defined wordsets which will be searched for in content  |
 | allow_list          | array of strings *                                                                                                | KEYWORD_PRESET           | substrings which will be exempt from triggering the preset trigger type    |
-| mention_total_limit | integer                                                                                                           | MENTION_SPAM             | total number of mentions (role & user) allowed per message (Maximum of 50) |
+| mention_total_limit | integer                                                                                                           | MENTION_SPAM             | total number of unique role and user mentions allowed per message (Maximum of 50) |
 
 \* A keyword can be a phrase which contains multiple words. Wildcard symbols (not available to allow lists) can be used to customize how each keyword will be matched.
 See [keyword matching strategies](#DOCS_RESOURCES_AUTO_MODERATION/auto-moderation-rule-object-keyword-matching-strategies).
@@ -83,20 +79,20 @@ See [keyword matching strategies](#DOCS_RESOURCES_AUTO_MODERATION/auto-moderatio
 
 ###### Keyword Preset Types
 
-| Type             | Value | Description                                                  |
-| ---------------- | ----- | ------------------------------------------------------------ |
-| PROFANITY        | 1     | Words that may be considered forms of swearing or cursing    |
-| SEXUAL_CONTENT   | 2     | Words that refer to sexually explicit behavior or activity   |
-| SLURS            | 3     | Personal insults or words that may be considered hate speech |
+| Type           | Value | Description                                                  |
+| -------------- | ----- | ------------------------------------------------------------ |
+| PROFANITY      | 1     | Words that may be considered forms of swearing or cursing    |
+| SEXUAL_CONTENT | 2     | Words that refer to sexually explicit behavior or activity   |
+| SLURS          | 3     | Personal insults or words that may be considered hate speech |
 
 
 ###### Event Types
 
 Indicates in what event context a rule should be checked.
 
-| Type             | Value   | Description                                         |
-| ---------------- | ------- | --------------------------------------------------- |
-| MESSAGE_SEND     | 1       | when a member sends or edits a message in the guild |
+| Type         | Value | Description                                         |
+| ------------ | ----- | --------------------------------------------------- |
+| MESSAGE_SEND | 1     | when a member sends or edits a message in the guild |
 
 
 ###### Keyword Matching Strategies
@@ -106,7 +102,7 @@ Use the wildcard symbol (`*`) at the beginning or end of a keyword to define how
 **Prefix** - word must start with the keyword
 
 | Keyword   | Matches                               |
-| --------- | --------------------------------------|
+| --------- | ------------------------------------- |
 | cat\*     | **cat**ch, **Cat**apult, **CAt**tLE   |
 | tra\*     | **tra**in, **tra**de, **TRA**ditional |
 | the mat\* | **the mat**rix                        |
@@ -154,11 +150,11 @@ An action which will execute whenever a rule is triggered.
 
 ###### Auto Moderation Action Types
 
-| Type                  | Value   | Description                                           |
-| --------------------- | ------- | ----------------------------------------------------- |
-| BLOCK_MESSAGE         | 1       | blocks the content of a message according to the rule |
-| SEND_ALERT_MESSAGE    | 2       | logs user content to a specified channel              |
-| TIMEOUT               | 3       | timeout user for a specified duration *               |
+| Type               | Value | Description                                           |
+| ------------------ | ----- | ----------------------------------------------------- |
+| BLOCK_MESSAGE      | 1     | blocks the content of a message according to the rule |
+| SEND_ALERT_MESSAGE | 2     | logs user content to a specified channel              |
+| TIMEOUT            | 3     | timeout user for a specified duration *               |
 
 \* A `TIMEOUT` action can only be set up for `KEYWORD` and `MENTION_SPAM` rules. The `MODERATE_MEMBERS` permission is required to use the `TIMEOUT` action type.
 
@@ -168,10 +164,10 @@ An action which will execute whenever a rule is triggered.
 Additional data used when an action is executed. Different fields are relevant based on the
 value of [action type](#DOCS_RESOURCES_AUTO_MODERATION/auto-moderation-action-object-action-types).
 
-| Field            | Type       | Associated Action Types | Description                                    | 
-| ---------------- | ---------- | ----------------------- | ---------------------------------------------- |
-| channel_id       | snowflake  | SEND_ALERT_MESSAGE      | channel to which user content should be logged |
-| duration_seconds | integer    | TIMEOUT                 | timeout duration in seconds *                  |
+| Field            | Type      | Associated Action Types | Description                                    |
+| ---------------- | --------- | ----------------------- | ---------------------------------------------- |
+| channel_id       | snowflake | SEND_ALERT_MESSAGE      | channel to which user content should be logged |
+| duration_seconds | integer   | TIMEOUT                 | timeout duration in seconds *                  |
 
 \* Maximum of 2419200 seconds (4 weeks)
 
@@ -197,7 +193,7 @@ Get a single rule. Returns an [auto moderation rule](#DOCS_RESOURCES_AUTO_MODERA
 
 ## Create Auto Moderation Rule % POST /guilds/{guild.id#DOCS_RESOURCES_GUILD/guild-object}/auto-moderation/rules
 
-Create a new rule. Returns an [auto moderation rule](#DOCS_RESOURCES_AUTO_MODERATION/auto-moderation-rule-object) on success. Fires an [Auto Moderation Rule Create](#DOCS_TOPICS_GATEWAY/auto-moderation-rule-create) Gateway event.
+Create a new rule. Returns an [auto moderation rule](#DOCS_RESOURCES_AUTO_MODERATION/auto-moderation-rule-object) on success. Fires an [Auto Moderation Rule Create](#DOCS_TOPICS_GATEWAY_EVENTS/auto-moderation-rule-create) Gateway event.
 
 > info
 > This endpoint requires the `MANAGE_GUILD` [permission](#DOCS_RESOURCES_AUTO_MODERATION/auto-moderation-permission-requirements).
@@ -226,7 +222,7 @@ Create a new rule. Returns an [auto moderation rule](#DOCS_RESOURCES_AUTO_MODERA
 
 ## Modify Auto Moderation Rule % PATCH /guilds/{guild.id#DOCS_RESOURCES_GUILD/guild-object}/auto-moderation/rules/{auto_moderation_rule.id#DOCS_RESOURCES_AUTO_MODERATION/auto-moderation-rule-object}
 
-Modify an existing rule. Returns an [auto moderation rule](#DOCS_RESOURCES_AUTO_MODERATION/auto-moderation-rule-object) on success. Fires an [Auto Moderation Rule Update](#DOCS_TOPICS_GATEWAY/auto-moderation-rule-update) Gateway event.
+Modify an existing rule. Returns an [auto moderation rule](#DOCS_RESOURCES_AUTO_MODERATION/auto-moderation-rule-object) on success. Fires an [Auto Moderation Rule Update](#DOCS_TOPICS_GATEWAY_EVENTS/auto-moderation-rule-update) Gateway event.
 
 > info
 > Requires `MANAGE_GUILD` [permissions](#DOCS_RESOURCES_AUTO_MODERATION/auto-moderation-permission-requirements).
@@ -253,7 +249,7 @@ Modify an existing rule. Returns an [auto moderation rule](#DOCS_RESOURCES_AUTO_
 
 ## Delete Auto Moderation Rule % DELETE /guilds/{guild.id#DOCS_RESOURCES_GUILD/guild-object}/auto-moderation/rules/{auto_moderation_rule.id#DOCS_RESOURCES_AUTO_MODERATION/auto-moderation-rule-object}
 
-Delete a rule. Returns a `204` on success. Fires an [Auto Moderation Rule Delete](#DOCS_TOPICS_GATEWAY/auto-moderation-rule-delete) Gateway event.
+Delete a rule. Returns a `204` on success. Fires an [Auto Moderation Rule Delete](#DOCS_TOPICS_GATEWAY_EVENTS/auto-moderation-rule-delete) Gateway event.
 
 > info
 > This endpoint requires the `MANAGE_GUILD` [permission](#DOCS_RESOURCES_AUTO_MODERATION/auto-moderation-permission-requirements).
