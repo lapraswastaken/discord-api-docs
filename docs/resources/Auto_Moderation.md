@@ -152,7 +152,7 @@ An action which will execute whenever a rule is triggered.
 
 \* Can be omitted based on `type`. See the `Associated Action Types` column in [action metadata](#DOCS_RESOURCES_AUTO_MODERATION/auto-moderation-action-object-action-metadata) to understand which `type` values require `metadata` to be set.
 
-###### Action Types
+###### Auto Moderation Action Types
 
 | Type                  | Value   | Description                                           |
 | --------------------- | ------- | ----------------------------------------------------- |
@@ -163,7 +163,7 @@ An action which will execute whenever a rule is triggered.
 \* A `TIMEOUT` action can only be set up for `KEYWORD` and `MENTION_SPAM` rules. The `MODERATE_MEMBERS` permission is required to use the `TIMEOUT` action type.
 
 
-###### Action Metadata
+###### Auto Moderation Action Metadata Structure
 
 Additional data used when an action is executed. Different fields are relevant based on the
 value of [action type](#DOCS_RESOURCES_AUTO_MODERATION/auto-moderation-action-object-action-types).

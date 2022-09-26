@@ -17,10 +17,10 @@ Guilds in Discord represent an isolated collection of users and channels, and ar
 | icon_hash?                    | ?string                                                                                                      | [icon hash](#DOCS_REFERENCE/image-formatting), returned when in the template object                                                                                    |
 | splash                        | ?string                                                                                                      | [splash hash](#DOCS_REFERENCE/image-formatting)                                                                                                                        |
 | discovery_splash              | ?string                                                                                                      | [discovery splash hash](#DOCS_REFERENCE/image-formatting); only present for guilds with the "DISCOVERABLE" feature                                                     |
-| owner? \*                   | boolean                                                                                                      | true if [the user](#DOCS_RESOURCES_USER/get-current-user-guilds) is the owner of the guild                                                                             |
+| owner? \*                     | boolean                                                                                                      | true if [the user](#DOCS_RESOURCES_USER/get-current-user-guilds) is the owner of the guild                                                                             |
 | owner_id                      | snowflake                                                                                                    | id of owner                                                                                                                                                            |
-| permissions? \*             | string                                                                                                       | total permissions for [the user](#DOCS_RESOURCES_USER/get-current-user-guilds) in the guild (excludes overwrites)                                                      |
-| region? \*\*                | ?string                                                                                                      | [voice region](#DOCS_RESOURCES_VOICE/voice-region-object) id for the guild (deprecated)                                                                                |
+| permissions? \*               | string                                                                                                       | total permissions for [the user](#DOCS_RESOURCES_USER/get-current-user-guilds) in the guild (excludes overwrites)                                                      |
+| region? \*\*                  | ?string                                                                                                      | [voice region](#DOCS_RESOURCES_VOICE/voice-region-object) id for the guild (deprecated)                                                                                |
 | afk_channel_id                | ?snowflake                                                                                                   | id of afk channel                                                                                                                                                      |
 | afk_timeout                   | integer                                                                                                      | afk timeout in seconds                                                                                                                                                 |
 | widget_enabled?               | boolean                                                                                                      | true if the server widget is enabled                                                                                                                                   |
@@ -272,14 +272,14 @@ A partial [guild](#DOCS_RESOURCES_GUILD/guild-object) object. Represents an Offl
 
 ###### Guild Widget Structure
 
-| Field                      | Type                                                                                | Description                                                 |
-| -------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------- |
-| id                 | snowflake                                                                         | guild id                                                             |
-| name               | string                                                                            | guild name (2-100 characters)                                        |
-| instant_invite     | ?string                                                                           | instant invite for the guilds specified widget invite channel        |
-| channels           | array of partial [channel](#DOCS_RESOURCES_CHANNEL/channel-object) objects        | voice and stage channels which are accessible by @everyone           |
-| members            | array of partial [user](#DOCS_RESOURCES_USER/user-object) objects                 | special widget user objects that includes users presence (Limit 100) |
-| presence_count     | integer                                                                           | number of online members in this guild                               |
+| Field              | Type                                                                       | Description                                                          |
+| ------------------ | -------------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| id                 | snowflake                                                                  | guild id                                                             |
+| name               | string                                                                     | guild name (2-100 characters)                                        |
+| instant_invite     | ?string                                                                    | instant invite for the guilds specified widget invite channel        |
+| channels           | array of partial [channel](#DOCS_RESOURCES_CHANNEL/channel-object) objects | voice and stage channels which are accessible by @everyone           |
+| members            | array of partial [user](#DOCS_RESOURCES_USER/user-object) objects          | special widget user objects that includes users presence (Limit 100) |
+| presence_count     | integer                                                                    | number of online members in this guild                               |
 
 > warn
 > The fields `id`, `discriminator` and `avatar` are anonymized to prevent abuse.
@@ -382,10 +382,10 @@ A partial [guild](#DOCS_RESOURCES_GUILD/guild-object) object. Represents an Offl
 
 ###### Integration Expire Behaviors
 
-| Value | Name        |
-| ----- | ----------- |
-| 0     | Remove role |
-| 1     | Kick        |
+| Name        | Value |
+| ----------- | ----- |
+| Remove_Role | 0     |
+| Kick        | 1     |
 
 ### Integration Account Object
 

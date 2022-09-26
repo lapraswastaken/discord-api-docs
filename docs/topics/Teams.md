@@ -53,7 +53,7 @@ Go team!
 
 ## Data Models
 
-###### Team Object
+###### Team Structure
 
 | field         | type                                                                              | description                            |
 | ------------- | --------------------------------------------------------------------------------- | -------------------------------------- |
@@ -63,18 +63,18 @@ Go team!
 | name          | string                                                                            | the name of the team                   |
 | owner_user_id | snowflake                                                                         | the user id of the current team owner  |
 
-###### Team Member Object
+###### Team Member Structure
 
 | field            | type                                                    | description                                                                                     |
 | ---------------- | ------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| membership_state | integer                                                 | the user's [membership state](#DOCS_TOPICS_TEAMS/data-models-membership-state-enum) on the team |
+| membership_state | [membership state type](#DOCS_TOPICS_TEAMS/data-models-membership-state-enum) | the user's [membership state](#DOCS_TOPICS_TEAMS/data-models-membership-state-enum) on the team |
 | permissions      | array of strings                                        | will always be `["*"]`                                                                          |
 | team_id          | snowflake                                               | the id of the parent team of which they are a member                                            |
 | user             | partial [user](#DOCS_RESOURCES_USER/user-object) object | the avatar, discriminator, id, and username of the user                                         |
 
-###### Membership State Enum
+###### Membership State Types
 
-| name     | value |
+| Name     | Value |
 | -------- | ----- |
 | INVITED  | 1     |
 | ACCEPTED | 2     |

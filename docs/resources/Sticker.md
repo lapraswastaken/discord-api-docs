@@ -107,9 +107,9 @@ Returns the list of sticker packs available to Nitro subscribers.
 
 ###### Response Structure
 
-| Field         | Type                                                                         |
-| ------------- | ---------------------------------------------------------------------------- |
-| sticker_packs | array of [sticker pack](#DOCS_RESOURCES_STICKER/sticker-pack-object) objects |
+| Field         | Type                                                                         | Description                                                                       |
+| ------------- | ---------------------------------------------------------------------------- | ----------------------------------------------------------------------------------|
+| sticker_packs | array of [sticker pack](#DOCS_RESOURCES_STICKER/sticker-pack-object) objects | The list of [sticker pack](#DOCS_RESOURCES_STICKER/sticker-pack-object)s returned |
 
 ## List Guild Stickers % GET /guilds/{guild.id#DOCS_RESOURCES_GUILD/guild-object}/stickers
 

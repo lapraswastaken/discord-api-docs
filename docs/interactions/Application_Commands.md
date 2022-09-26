@@ -67,7 +67,7 @@ Application commands are native ways to interact with apps in the Discord client
 > info
 > Options using `autocomplete` are not confined to only use choices given by the application.
 
-###### Application Command Option Type
+###### Application Command Option Types
 
 | Name              | Value | Note                                                           |
 | ----------------- | ----- | -------------------------------------------------------------- |
@@ -275,7 +275,7 @@ Returned when fetching the permissions for an app's command(s) in a guild.
 
 When the `id` field is the application ID instead of a command ID, the permissions apply to all commands that do not contain explicit overwrites.
 
-###### Application Command Permissions Structure
+###### Application Command Permission Structure
 
 Application command permissions allow you to enable or disable commands for specific users, roles, or channels within a guild.
 

@@ -54,14 +54,14 @@ Apps can specify why an administrative action is being taken by passing an `X-Au
 | changes?    | array of [audit log change](#DOCS_RESOURCES_AUDIT_LOG/audit-log-change-object) objects                  | Changes made to the target_id                         |
 | user_id     | ?snowflake                                                                                              | User or app that made the changes                     |
 | id          | snowflake                                                                                               | ID of the entry                                       |
-| action_type | [audit log event](#DOCS_RESOURCES_AUDIT_LOG/audit-log-entry-object-audit-log-events)                    | Type of action that occurred                          |
+| action_type | [audit log event type](#DOCS_RESOURCES_AUDIT_LOG/audit-log-entry-object-audit-log-events)                    | Type of action that occurred                          |
 | options?    | [optional audit entry info](#DOCS_RESOURCES_AUDIT_LOG/audit-log-entry-object-optional-audit-entry-info) | Additional info for certain event types               |
 | reason?     | string                                                                                                  | Reason for the change (1-512 characters)              |
 
 > warn
 > For `APPLICATION_COMMAND_PERMISSION_UPDATE` events, the `target_id` is the command ID or the app ID since the `changes` array represents the entire `permissions` property on the [guild permissions](#DOCS_INTERACTIONS_APPLICATION_COMMANDS/application-command-permissions-object-guild-application-command-permissions-structure) object.
 
-###### Audit Log Events
+###### Audit Log Event Types
 
 The table below lists audit log events and values (the `action_type` field) that your app may receive.
 
@@ -129,7 +129,7 @@ If no object is noted, there won't be a `changes` array in the entry, though oth
 
 \* Object has exception(s) to available keys. See the [exceptions](#DOCS_RESOURCES_AUDIT_LOG/audit-log-change-object-audit-log-change-exceptions) section below for details.
 
-###### Optional Audit Entry Info
+###### Optional Audit Entry Info Structure
 
 | Field              | Type      | Description                                                      | Event Types                                                                                                                        |
 | ------------------ | --------- | ---------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |

@@ -62,32 +62,32 @@ There are other rules and restrictions not shared here for the sake of spam and 
 
 ###### User Flags
 
-| Value   | Name                     | Description                                                                                                                                    |
-| ------- | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1 << 0  | STAFF                    | Discord Employee                                                                                                                               |
-| 1 << 1  | PARTNER                  | Partnered Server Owner                                                                                                                         |
-| 1 << 2  | HYPESQUAD                | HypeSquad Events Member                                                                                                                        |
-| 1 << 3  | BUG_HUNTER_LEVEL_1       | Bug Hunter Level 1                                                                                                                             |
-| 1 << 6  | HYPESQUAD_ONLINE_HOUSE_1 | House Bravery Member                                                                                                                           |
-| 1 << 7  | HYPESQUAD_ONLINE_HOUSE_2 | House Brilliance Member                                                                                                                        |
-| 1 << 8  | HYPESQUAD_ONLINE_HOUSE_3 | House Balance Member                                                                                                                           |
-| 1 << 9  | PREMIUM_EARLY_SUPPORTER  | Early Nitro Supporter                                                                                                                          |
-| 1 << 10 | TEAM_PSEUDO_USER         | User is a [team](#DOCS_TOPICS_TEAMS/)                                                                                                          |
-| 1 << 14 | BUG_HUNTER_LEVEL_2       | Bug Hunter Level 2                                                                                                                             |
-| 1 << 16 | VERIFIED_BOT             | Verified Bot                                                                                                                                   |
-| 1 << 17 | VERIFIED_DEVELOPER       | Early Verified Bot Developer                                                                                                                   |
-| 1 << 18 | CERTIFIED_MODERATOR      | Discord Certified Moderator                                                                                                                    |
-| 1 << 19 | BOT_HTTP_INTERACTIONS    | Bot uses only [HTTP interactions](#DOCS_INTERACTIONS_RECEIVING_AND_RESPONDING/receiving-an-interaction) and is shown in the online member list |
+| Name                     | Value   | Description                                                                                                                                    |
+| ------------------------ | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| STAFF                    | 1 << 0  | Discord Employee                                                                                                                               |
+| PARTNER                  | 1 << 1  | Partnered Server Owner                                                                                                                         |
+| HYPESQUAD                | 1 << 2  | HypeSquad Events Member                                                                                                                        |
+| BUG_HUNTER_LEVEL_1       | 1 << 3  | Bug Hunter Level 1                                                                                                                             |
+| HYPESQUAD_ONLINE_HOUSE_1 | 1 << 6  | House Bravery Member                                                                                                                           |
+| HYPESQUAD_ONLINE_HOUSE_2 | 1 << 7  | House Brilliance Member                                                                                                                        |
+| HYPESQUAD_ONLINE_HOUSE_3 | 1 << 8  | House Balance Member                                                                                                                           |
+| PREMIUM_EARLY_SUPPORTER  | 1 << 9  | Early Nitro Supporter                                                                                                                          |
+| TEAM_PSEUDO_USER         | 1 << 10 | User is a [team](#DOCS_TOPICS_TEAMS/)                                                                                                          |
+| BUG_HUNTER_LEVEL_2       | 1 << 14 | Bug Hunter Level 2                                                                                                                             |
+| VERIFIED_BOT             | 1 << 16 | Verified Bot                                                                                                                                   |
+| VERIFIED_DEVELOPER       | 1 << 17 | Early Verified Bot Developer                                                                                                                   |
+| CERTIFIED_MODERATOR      | 1 << 18 | Discord Certified Moderator                                                                                                                    |
+| BOT_HTTP_INTERACTIONS    | 1 << 19 | Bot uses only [HTTP interactions](#DOCS_INTERACTIONS_RECEIVING_AND_RESPONDING/receiving-an-interaction) and is shown in the online member list |
 
 ###### Premium Types
 
 Premium types denote the level of premium a user has. Visit the [Nitro](https://discord.com/nitro) page to learn more about the premium plans we currently offer.
 
-| Value | Name          |
-| ----- | ------------- |
-| 0     | None          |
-| 1     | Nitro Classic |
-| 2     | Nitro         |
+| Name         | Value |
+| ------------ | ----- |
+| None         | 0     |
+| NitroClassic | 1     |
+| Nitro        | 2     |
 
 ### Connection Object
 
@@ -101,7 +101,7 @@ The connection object that the user has attached.
 | name          | string  | the username of the connection account                                                   |
 | type          | string  | the [service](#DOCS_RESOURCES_USER/connection-object-services) of this connection        |
 | revoked?      | boolean | whether the connection is revoked                                                        |
-| integrations? | array   | an array of partial [server integrations](#DOCS_RESOURCES_GUILD/integration-object)      |
+| integrations? | array of partial [integrations](#DOCS_RESOURCES_GUILD/integration-object)   | an array of partial [server integrations](#DOCS_RESOURCES_GUILD/integration-object)      |
 | verified      | boolean | whether the connection is verified                                                       |
 | friend_sync   | boolean | whether friend sync is enabled for this connection                                       |
 | show_activity | boolean | whether activities related to this connection will be shown in presence updates          |
@@ -133,10 +133,10 @@ The connection object that the user has attached.
 
 ###### Visibility Types
 
-| Value | Name     | Description                                      |
-| ----- | -------- | ------------------------------------------------ |
-| 0     | None     | invisible to everyone except the user themselves |
-| 1     | Everyone | visible to everyone                              |
+| Name     | Value | Description                                      |
+| -------- | ----- | ------------------------------------------------ |
+| None     | 0     | invisible to everyone except the user themselves |
+| Everyone | 1     | visible to everyone                              |
 
 ## Get Current User % GET /users/@me
 

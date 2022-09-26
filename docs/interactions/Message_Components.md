@@ -14,12 +14,12 @@ The top-level `components` field is an array of [Action Row](#DOCS_INTERACTIONS_
 
 ###### Component Types
 
-| Type | Name        | Description                            |
-| ---- | ----------- | -------------------------------------- |
-| 1    | Action Row  | A container for other components       |
-| 2    | Button      | A button object                        |
-| 3    | Select Menu | A select menu for picking from choices |
-| 4    | Text Input  | A text input object                    |
+| Name        | Type | Description                            |
+| ----------- | ---- | -------------------------------------- |
+| ACTION_ROW  | 1    | A container for other components       |
+| BUTTON      | 2    | A button object                        |
+| SELECT_MENU | 3    | A select menu for picking from choices |
+| TEXT_INPUT  | 4    | A text input object                    |
 
 The structure of each component type is described in detail below.
 
@@ -63,6 +63,13 @@ An Action Row is a non-interactive container component for other types of compon
     ]
 }
 ```
+
+###### Action Row Structure
+
+| Field      | Type                                                                                    | Description                |
+| ---------- | --------------------------------------------------------------------------------------- | -------------------------- |
+| type       | integer                                                                                 | `1` for an action row      |
+| components | array of [message components](#DOCS_INTERACTIONS_MESSAGE_COMPONENTS/message-components) | the components on this row |
 
 ## Responding to a Component Interaction
 

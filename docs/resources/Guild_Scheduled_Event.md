@@ -17,8 +17,8 @@ A representation of a scheduled event in a [guild](#DOCS_RESOURCES_GUILD/).
 | scheduled_start_time  | ISO8601 timestamp                                                                                                              | the time the scheduled event will start                                                                                                                                                                               |
 | scheduled_end_time ** | ?ISO8601 timestamp                                                                                                             | the time the scheduled event will end, required if entity_type is `EXTERNAL`                                                                                                                                          |
 | privacy_level         | [privacy level](#DOCS_RESOURCES_GUILD_SCHEDULED_EVENT/guild-scheduled-event-object-guild-scheduled-event-privacy-level)        | the privacy level of the scheduled event                                                                                                                                                                              |
-| status                | [event status](#DOCS_RESOURCES_GUILD_SCHEDULED_EVENT/guild-scheduled-event-object-guild-scheduled-event-status)                | the status of the scheduled event                                                                                                                                                                                     |
-| entity_type           | [scheduled entity type](#DOCS_RESOURCES_GUILD_SCHEDULED_EVENT/guild-scheduled-event-object-guild-scheduled-event-entity-types) | the type of the scheduled event                                                                                                                                                                                       |
+| status                | [status type](#DOCS_RESOURCES_GUILD_SCHEDULED_EVENT/guild-scheduled-event-object-guild-scheduled-event-status)                | the status of the scheduled event                                                                                                                                                                                     |
+| entity_type           | [entity type](#DOCS_RESOURCES_GUILD_SCHEDULED_EVENT/guild-scheduled-event-object-guild-scheduled-event-entity-types) | the type of the scheduled event                                                                                                                                                                                       |
 | entity_id             | ?snowflake                                                                                                                     | the id of an entity associated with a guild scheduled event                                                                                                                                                           |
 | entity_metadata **    | ?[entity metadata](#DOCS_RESOURCES_GUILD_SCHEDULED_EVENT/guild-scheduled-event-object-guild-scheduled-event-entity-metadata)   | additional metadata for the guild scheduled event                                                                                                                                                                     |
 | creator?              | [user](#DOCS_RESOURCES_USER/user-object) object                                                                                | the user that created the scheduled event                                                                                                                                                                             |
@@ -63,7 +63,7 @@ The following table shows field requirements based on current entity type.
 \* `entity_metadata` with a non-null `location` must be provided
 
 
-###### Guild Scheduled Event Status
+###### Guild Scheduled Event Status Types
 
 | Type        | Value |
 | ----------- | ----- |
@@ -83,7 +83,7 @@ ACTIVE --------> COMPLETED
 SCHEDULED --> CANCELED
 
 
-###### Guild Scheduled Event Entity Metadata
+###### Guild Scheduled Event Entity Metadata Structure
 
 | Field        | Type                | Description                              |
 | ------------ | ------------------- | ---------------------------------------- |

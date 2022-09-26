@@ -209,7 +209,7 @@ Roles without colors (`color == 0`) do not count towards the final computed colo
 | ------------------- | --------- | --------------------------------------------------- |
 | bot_id?             | snowflake | the id of the bot this role belongs to              |
 | integration_id?     | snowflake | the id of the integration this role belongs to      |
-| premium_subscriber? | null      | whether this is the guild's premium subscriber role |
+| premium_subscriber? | boolean   | whether this is the guild's premium subscriber role |
 
 ###### Example Role
 
